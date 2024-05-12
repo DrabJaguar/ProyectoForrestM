@@ -1,0 +1,270 @@
+@charset "UTF-8";
+  /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3b757f;
+            margin: 80px;
+            padding: 0px;
+        }
+        
+        h1{
+			position: relative;
+            color: #2d464c; 
+            font-size: 60px;
+            top:-80px;
+            left:20px;
+        }
+        h2{
+			position: relative;
+            color: #2d464c; 
+            font-size: 20px;
+            top:-100px;
+            left:80px;
+		}
+        
+        .header-style{
+			position: relative;	
+			width: 20%;
+			height: 0%;
+		}
+		
+		.lateral-style{
+	
+			position: relative;
+			width: 20%;
+			height: 20%;
+			top:10px;
+		}
+        
+        .panel-m-style{
+			position: relative;
+			width: 70%;
+			height: auto;
+			left: 400px;
+			top:-630px;
+		}
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        /* Estilos para el encabezado */
+        header {
+            background-color: #007bff; /* Color azul */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header nav ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        /* Estilos para los paneles */
+        p.panel {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            top:60px;
+            padding: 20px;
+        }
+        
+        p.panel header {
+            background-color: #5faab1;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+            font-size: 18px;
+            padding: 10px 0;
+            text-align: center;
+        }
+        
+        /* Estilos para los enlaces rápidos */
+        p.panel ul {
+            margin-left: 0;
+            padding:120px;
+            padding-left: 20px;
+        }
+        
+        p.panel ul li {
+            margin-bottom: 5px;
+        }
+        
+        p.panel ul li a {
+
+            background-color:#5faab1;
+            text-decoration: none;
+        }
+        
+        p.panel ul li a:hover {
+            text-decoration: underline;
+        }
+		        
+		.submenu-style {
+			color: #bfe0e2;
+		
+		}
+		
+		.menuitem-style {
+		  color: #2d464c; /* Color de texto */
+		  background-color: #bfe0e2; 
+	
+		 
+		}
+		
+		.header-style{
+		 margin-bottom: 20px;
+	
+		}
+		
+		.resumen-style{
+		 margin-bottom: 20px;
+		}
+		
+		.image-style {
+		    display: block; /* Para que la imagen ocupe todo el ancho del panel */
+		    margin: 0 auto; /* Para centrar la imagen horizontalmente */
+		    width:10%;
+		}
+		
+	
+        	
+		.loading {
+		 --speed-of-animation: 0.9s;
+		 --gap: 6px;
+		 --first-color: #4c86f9;
+		 --second-color: #49a84c;
+		 --third-color: #3b757f;
+		 --fourth-color: #3b757f;
+		 --fifth-color: #2196f3;
+		 display: flex;
+		 justify-content: center;
+		 align-items: center;
+		 width: 100px;
+		 gap: 6px;
+		 height: 100px;
+		}
+
+			.loading span {
+			 width: 4px;
+			 height: 50px;
+			 background: var(--first-color);
+			 animation: scale var(--speed-of-animation) ease-in-out infinite;
+			}
+			
+			.loading span:nth-child(2) {
+			 background: var(--second-color);
+			 animation-delay: -0.8s;
+			}
+			
+			.loading span:nth-child(3) {
+			 background: var(--third-color);
+			 animation-delay: -0.7s;
+			}
+			
+			.loading span:nth-child(4) {
+			 background: var(--fourth-color);
+			 animation-delay: -0.6s;
+			}
+			
+			.loading span:nth-child(5) {
+			 background: var(--fifth-color);
+			 animation-delay: -0.5s;
+			}
+			
+			@keyframes scale {
+			 0%, 40%, 100% {
+			  transform: scaleY(0.05);
+			 }
+			
+			 20% {
+			  transform: scaleY(1);
+			 }
+			}
+			
+			
+     /*Boton Emisora*/
+     
+     .button {
+ --color: #3b757f;
+ padding: 0.8em 1.7em;
+ background-color: transparent;
+ border-radius: .3em;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
+ transition: .5s;
+ font-weight: 400;
+ font-size: 17px;
+ border: 1px solid;
+ font-family: inherit;
+ text-transform: uppercase;
+ color: var(--color);
+ z-index: 1;
+}
+
+.button::before, .button::after {
+ content: '';
+ display: block;
+ width: 50px;
+ height: 50px;
+ transform: translate(-50%, -50%);
+ position: absolute;
+ border-radius: 50%;
+ z-index: -1;
+ background-color: var(--color);
+ transition: 1s ease;
+}
+
+.button::before {
+ top: -1em;
+ left: -1em;
+}
+
+.button::after {
+ left: calc(100% + 1em);
+ top: calc(100% + 1em);
+}
+
+.button:hover::before, .button:hover::after {
+ height: 410px;
+ width: 410px;
+}
+
+.button:hover {
+ color: rgb(10, 25, 30);
+}
+
+.button:active {
+ filter: brightness(.8);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos equitativamente a lo largo del contenedor */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+.container > div, .container > button {
+    flex: 1; /* Esto permite que los elementos crezcan para ocupar todo el espacio disponible */
+    margin-right: 10px; /* Espacio entre los elementos */
+}
+     
+        
+        

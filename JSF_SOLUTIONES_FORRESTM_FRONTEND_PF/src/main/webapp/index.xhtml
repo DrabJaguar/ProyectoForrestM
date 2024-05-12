@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<link rel="stylesheet" href="index.css" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>ForrestM - Dashboard</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:panel header="ForrestM" styleClass="header-style">
+			<div class="loading">
+				<span></span> <span></span> <span></span> <span></span> <span></span>
+			</div>
+			<h1>ForrestM</h1>
+			<h2>172.16.254.1 FM</h2>
+			
+		
+		</p:panel>
+
+		<p:menu styleClass="lateral-style">
+			<p:submenu label="Navegación" styleClass="submenu-style">
+				<p:menuitem value="Parámetros de la Emisora" url="index.xhtml"
+					styleClass="menuitem-style" />
+				<p:menuitem value="Creación de Pistas Musicales"
+					url="pista.xhtml" styleClass="menuitem-style" />
+				<p:menuitem value="Ejecución de la Parrilla de Programación"
+					url="index.xhtml" styleClass="menuitem-style" />
+			</p:submenu>
+		</p:menu>
+
+
+
+		<p:panel header="Parametros Emisora" styleClass="panel-m-style">
+
+			<h:form>
+				<p:growl id="msgs" showDetail="true"
+					skipDetailIfEqualsSummary="true" />
+
+				<div class="container">
+
+
+					<div class="field col-12 md:col-4 name-form">
+						<h5 class="mt-0">Nombre emisora:</h5>
+						<!-- El autoComplete establece el valor en #{emisoraBean.name_emisora} -->
+						<p:autoComplete id="acSimple" value="#{emisoraBean.name_emisora}"
+							completeMethod="#{autoCompleteView.completeText}"
+							scrollHeight="250" />
+					</div>
+
+
+
+
+					<div class="type-form">
+						<h5>Modo Transmisión:</h5>
+
+						<p:cascadeSelect value="#{emisoraBean.modo_emisora}"
+							style="min-width: 14rem" placeholder="Seleccione el modo">
+							<f:selectItems value="#{emisoraBean.modos_emisora}" />
+						</p:cascadeSelect>
+					</div>
+
+					<div>
+						<h5>Tipo de música que se va a transmitir:</h5>
+						<p:cascadeSelect value="#{emisoraBean.musica_emisora}"
+							style="min-width: 14rem" placeholder="Seleccione el tipo ">
+							<f:selectItems value="#{emisoraBean.tipos_musica}" />
+						</p:cascadeSelect>
+					</div>
+
+
+					<h:commandButton class="button"
+						action="#{emisoraBean.crearEmisora}" value="Crear Emisora"
+						style="top:30px " />
+
+
+				</div>
+
+			</h:form>
+		</p:panel>
+	</h:form>
+
+
+	<div style="display: flex; margin-top:30px;">
+
+		<p:panel header="Emisoras disponibles"
+			styleClass="panel-m-style emisoras-panel" >
+			<h:form>
+				<p:dataTable var="emisora" value="#{emisoraBean.elist}"
+					emptyMessage="No hay emisoras disponibles">
+					<p:column headerText="Id">
+						<h:outputText value="#{emisora.id_emisora}" />
+					</p:column>
+					<p:column headerText="Nombre">
+						<h:outputText value="#{emisora.name_emisora}" />
+					</p:column>
+					<p:column headerText="Género">
+						<h:outputText value="#{emisora.musica_emisora}" />
+					</p:column>
+					<p:column headerText="Action">
+						<h:commandButton class="button" action="#{pistaBean.fijar(emisora.id_emisora,emisora.name_emisora,emisora.musica_emisora,emisora.modo_emisora)}" value="Usar" />
+					</p:column>
+					<p:column headerText="Action">
+					<h:commandButton class="button" action="#{parrillaBean.fijar(pistaBean ,emisora.id_emisora,emisora.name_emisora,emisora.musica_emisora,emisora.modo_emisora)}" 
+                  value="Parrilla" />
+					
+				</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+
+	</div>
+	
+	
+	
+	
+</h:body>
+</html>

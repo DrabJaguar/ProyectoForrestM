@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <link rel="stylesheet" href="index.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ForrestM - Dashboard</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p:panel header="ForrestM" styleClass="header-style">
+            <div class="loading">
+                <span></span> <span></span> <span></span> <span></span> <span></span>
+            </div>
+            <h1>ForrestM</h1>
+            <h2>172.16.254.1 FM</h2>
+
+          	<h1>#{parrillaBean.nombre_emisora}</h1>
+          	<h2>#{parrillaBean.modo_emisora} #{parrillaBean.musica_emisora}</h2>
+          			
+        </p:panel>
+
+        <p:menu styleClass="lateral-style">
+            <p:submenu label="Navegación" styleClass="submenu-style">
+                <p:menuitem value="Parámetros de la Emisora" url="index.xhtml" styleClass="menuitem-style" />
+                <p:menuitem value="Creación de Pistas Musicales" url="pista.xhtml" styleClass="menuitem-style" />
+                <p:menuitem value="Ejecución de la Parrilla de Programación" url="index.xhtml" styleClass="menuitem-style" />
+            </p:submenu>
+        </p:menu>
+		
+       
+   </h:form>
+    
+    <div style="display: flex; ">
+	
+	<p:panel header="Pistas "
+			styleClass="panel-m-style emisoras-panel" style="top:-800px;" >
+					<iframe width="1080px" height="720px" src="#{parrillaBean.url}"  style="left:-500px"></iframe>
+		</p:panel>
+	</div>
+    
+    
+    <div style="display: flex; width:1700px;  ">
+	
+	<p:panel header="Pistas "
+			styleClass="panel-m-style emisoras-panel" style="top:-700px;" >
+			<h:form>
+				<p:dataTable var="pista" value="#{pistaBean.programacion}"
+					emptyMessage="No hay pistas para agregar">
+					<p:column headerText="Id">
+						<h:outputText value="#{pista.id_pista}" />
+					</p:column>
+					<p:column headerText="Nombre">
+						<h:outputText value="#{pista.nombre_pista}" />
+					</p:column>
+					<p:column headerText="Género">
+						<h:outputText value="#{pista.genero_pista}" />
+					</p:column>
+					
+					<p:column >
+						<h:commandButton class="button" action="#{parrillaBean.reproducir(pista.archivo_pista)}" value="Reproducir" style="left:50px;"/>
+					</p:column>
+			
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+	</div>
+    
+    
+
+    
+    
+</h:body>
+</html>
